@@ -21,7 +21,9 @@ const PORT = process.env.PORT || 4040;
 //console.log(sequelizeClient);
 
 async function getAllQuestions(){
-    const result = await Question.findAll();
+    const result = await Question.findAll({
+        attributes: ['question']
+    });
     console.log(result);
 }
 

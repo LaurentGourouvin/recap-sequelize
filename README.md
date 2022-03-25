@@ -113,3 +113,20 @@ User.init({
 
 module.exports = User;
 ```
+Nous avons aussi la possibilité de choisir quelle colonne récupérer avec la méthode `findAll()`. Pour ce faire, nous allons jouer avec les attributs. Si je veux récupérer seulement le **firstname** de les utilisateurs :
+
+```js
+const users = await User.findAll({
+    attributes: ['firstname']
+});
+```
+Ce qui donne :
+```js
+User {
+    dataValues: {
+        firstname: 'Toto'
+    },
+}...
+```
+### Petit récap sur le `findAll()`
+On peut donc faire un `SELECT * FROM...` afin de récupérer toutes les colonnes de la table visée avec la méthode `findAll()` ou tout simplement sélectionner les colonnes à afficher grâce aux attribut en faisant : `attributes: ['nom_colonne']`.
