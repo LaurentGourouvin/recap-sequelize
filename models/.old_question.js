@@ -8,7 +8,7 @@ const { Sequelize, Model, DataTypes } = require('sequelize');
 const { sequelize, sequelizeClient } = require('../dbClient');
 
 //Troisième étape, on va créer notre Objet/Class Question qui va hériter de la class Sequelize.Model
-//Cet héritage va nous permettre d'utilise TOUTES les méthodes de la classe Sequelize.Model
+//Cet héritage va nous permettre d'utiliser TOUTES les méthodes de la classe Sequelize.Model
 class Question extends Model {};
 
 //Quatrième étape, pour créer notre Model il va falloir utiliser la méthode init disponible dans la classe Model
