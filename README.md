@@ -91,13 +91,7 @@ Un exemple de Model pour User :
 const Sequelize = require('sequelize');
 const sequelize = require('../database');
 
-class User extends Sequelize.Model {
-
-  get fullname() {
-    return this.firstname + ' ' + this.lastname;
-  };
-
-};
+class User extends Sequelize.Model {};
 
 User.init({
   email: Sequelize.STRING,
@@ -130,3 +124,21 @@ User {
 ```
 ### Petit récap sur le `findAll()`
 On peut donc faire un `SELECT * FROM...` afin de récupérer toutes les colonnes de la table visée avec la méthode `findAll()` ou tout simplement sélectionner les colonnes à afficher grâce aux attribut en faisant : `attributes: ['nom_colonne']`.
+
+## Mettre en place des relations/associations grâce à Sequelize
+
+Avec Sequelize nous avons quatres possibilités d'association:
+- `HasOne`
+- `BelongsTo`
+- `HasMany`
+- `BelongsTo`
+   
+L'association `User.hasOne(Cart)` définis la cardinalité **[1,1]** entre la table **User** et **Card** avec une *clé étrangère* qu sera définie dans le model **Cart**. 
+
+The A.belongsTo(B) association means that a One-To-One relationship exists between A and B, with the foreign key being defined in the source model (A).
+
+The A.hasMany(B) association means that a One-To-Many relationship exists between A and B, with the foreign key being defined in the target model (B).
+
+These three calls will cause Sequelize to automatically add foreign keys to the appropriate models (unless they are already present).
+
+The A.belongsToMany(B, { through: 'C' }) association means that a Many-To-Many relationship exists between A and B, using table C as junction table, which will have the foreign keys (aId and bId, for example). Sequelize will automatically create this model C (unless it already exists) and define the appropriate foreign keys on it.
