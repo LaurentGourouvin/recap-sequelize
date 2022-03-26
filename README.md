@@ -1,5 +1,6 @@
 # Petit recap-sequelize
-
+1. [x]Récap-Sequelize
+2. [Lien](./association.md([ ] Association avec Sequelize)
 ## Qu'est-ce que Sequelize ?
 Sequelize est une puissante bibliothèque en Javascript qui facilite la gestion d’une base de données SQL. Sequelize peut superposer différents protocoles, mais ici nous allons utiliser PostgreSQL. En son coeur, Sequelize est un mappeur objet-relationnel – ce qui signifie qu’il mappe une syntaxe d’objet sur nos schémas/modèles de base de données.   
    
@@ -133,12 +134,26 @@ Avec Sequelize nous avons quatres possibilités d'association:
 - `HasMany`
 - `BelongsTo`
    
-L'association `User.hasOne(Cart)`, définis la cardinalité **[1,1]** entre la table **User** et **Card** avec une *clé étrangère* qu sera définie dans le model **Cart**. 
+L'association `User.hasOne(Cart)`, définit la cardinalité **[1,1]** entre la table **User** et **Cart** avec une *clé étrangère* qu sera définie dans le model **Cart**. 
 
-L'association `User.belongsTo(Cart)` définis la cardinalité **[1,1]** entre la table **User** et **Card** avec une *clé étrangère* qu sera définie dans le model racine qui est **User**.
+```js
+//--- Un user à un cart
+User.hasOne(Cart);
+```
 
-L'association `User.hasMany(Cart)` définis la cardinalité **[1,N]** entre **User** et **Cart**, avec une *clé étrangère* qui sera définie dans le model **Cart**. 
+L'association `User.belongsTo(Cart)` définit la cardinalité **[1,1]** entre la table **User** et **Card** avec une *clé étrangère* qu sera définie dans le model racine qui est **User**.
 
+```js
+//--- Un user à un cart
+User.belongsTo(Cart)
+```
+
+L'association `User.hasMany(Cart)` définit la cardinalité **[1,N]** entre **User** et **Cart**, avec une *clé étrangère* qui sera définie dans le model **Cart**. 
+
+```js
+// un User a plusieurs cart
+User.hasMany(Cart);
+```
 Le fait d'utiliser ces trois associations avec Sequelize permettent d'ajouter des clés étrangères directement à nos différents models. (même si elles sont déjà présentes)
 
-L'association `User.belongsToMany(Cart, { through: 'commandes'})` définis une association **[N,N]** entre **User** et **Cart** utilisant la table commandes en tant que jonction de table. Cette table commande contiendra les *clé étrangères* (User.id et Cart.id, par exemple). Sequelize va créer tout seul ce model **commandes** et définiera les bonnes clés étrangères.
+L'association `User.belongsToMany(Cart, { through: 'commandes'})` définit une association **[N,N]** entre **User** et **Cart** utilisant la table commandes en tant que jonction de table. Cette table commande contiendra les *clé étrangères* (User.id et Cart.id, par exemple). Sequelize va créer tout seul ce model **commandes** et définiera les bonnes clés étrangères.
