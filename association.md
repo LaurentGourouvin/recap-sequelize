@@ -1,6 +1,6 @@
 # Association avec Sequelize
-1. [ ]Récap-Sequelize
-2. [x] Association avec Sequelize
+[[ ]Récap-Sequelize](./README.md)  
+[x] Association avec Sequelize
 ## Mettre en place des relations/associations grâce à Sequelize
 
 Avec Sequelize nous avons quatres possibilités d'association:

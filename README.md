@@ -1,6 +1,6 @@
 # Petit recap-sequelize
-1. [x] Récap-Sequelize
-2. [[ ] Association avec Sequelize](./association.md)
+[x] Récap-Sequelize  
+[Association avec Sequelize](./association.md)
 ## Qu'est-ce que Sequelize ?
 Sequelize est une puissante bibliothèque en Javascript qui facilite la gestion d’une base de données SQL. Sequelize peut superposer différents protocoles, mais ici nous allons utiliser PostgreSQL. En son coeur, Sequelize est un mappeur objet-relationnel – ce qui signifie qu’il mappe une syntaxe d’objet sur nos schémas/modèles de base de données.   
    
