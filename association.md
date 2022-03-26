@@ -33,6 +33,7 @@ Le fait d'utiliser ces trois associations avec Sequelize permettent d'ajouter de
 
 L'association `User.belongsToMany(Cart, { through: 'commandes'})` définit une association **[N,N]** entre **User** et **Cart** utilisant la table commandes en tant que jonction de table. Cette table commande contiendra les *clé étrangères* (User.id et Cart.id, par exemple). Sequelize va créer tout seul ce model **commandes** et définiera les bonnes clés étrangères.  
 
+## Notre index.js de nos models
 Nous allons travailler avec les Models créer pour le challenge/pair programming Oquiz. (answer.js , level.js ...)  
 Dans notre dossier "Model", nous avons un fichier index.js dans lequel nous allons indiquer à Sequelize nos différentes associations :
 ```js
@@ -118,3 +119,4 @@ Tag.belongsToMany(Quiz, {
 
 module.exports = { Answer, Level, Question, Quiz, Tag, User };
 ```
+[Page suivante >>](./association2.md)

@@ -1,6 +1,6 @@
 // On récupère sequelize, ainsi que le connecteur (qui sera donc toujours le meme pour tous les modèles - merci require !)
 const Sequelize = require('sequelize');
-const sequelize = require('../database');
+const { sequelize, sequelizeClient } = require('../dbClient');
 
 // Maintenant, nos modèles héritent du "Model" de sequelize, et non plus de notre CoreModel.
 class Level extends Sequelize.Model {};
