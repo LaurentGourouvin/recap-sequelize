@@ -133,12 +133,12 @@ Avec Sequelize nous avons quatres possibilités d'association:
 - `HasMany`
 - `BelongsTo`
    
-L'association `User.hasOne(Cart)` définis la cardinalité **[1,1]** entre la table **User** et **Card** avec une *clé étrangère* qu sera définie dans le model **Cart**. 
+L'association `User.hasOne(Cart)`, définis la cardinalité **[1,1]** entre la table **User** et **Card** avec une *clé étrangère* qu sera définie dans le model **Cart**. 
 
-The A.belongsTo(B) association means that a One-To-One relationship exists between A and B, with the foreign key being defined in the source model (A).
+L'association `User.belongsTo(Cart)` définis la cardinalité **[1,1]** entre la table **User** et **Card** avec une *clé étrangère* qu sera définie dans le model racine qui est **User**.
 
-The A.hasMany(B) association means that a One-To-Many relationship exists between A and B, with the foreign key being defined in the target model (B).
+L'association `User.hasMany(Cart)` définis la cardinalité **[1,N]** entre **User** et **Cart**, avec une *clé étrangère* qui sera définie dans le model **Cart**. 
 
-These three calls will cause Sequelize to automatically add foreign keys to the appropriate models (unless they are already present).
+Le fait d'utiliser ces trois associations avec Sequelize permettent d'ajouter des clés étrangères directement à nos différents models. (même si elles sont déjà présentes)
 
-The A.belongsToMany(B, { through: 'C' }) association means that a Many-To-Many relationship exists between A and B, using table C as junction table, which will have the foreign keys (aId and bId, for example). Sequelize will automatically create this model C (unless it already exists) and define the appropriate foreign keys on it.
+L'association `User.belongsToMany(Cart, { through: 'commandes'})` définis une association **[N,N]** entre **User** et **Cart** utilisant la table commandes en tant que jonction de table. Cette table commande contiendra les *clé étrangères* (User.id et Cart.id, par exemple). Sequelize va créer tout seul ce model **commandes** et définiera les bonnes clés étrangères.
