@@ -68,4 +68,35 @@ FROM "quiz" AS "Quiz"
 WHERE "Quiz"."id" = 1;
 ``` 
 Notre relation, n'est donc pas prise en compte. Voici le résultat de la requête :   
-[image](/images/recup-quiz-id-1.png)  
+![image](/images/recup-quiz-id-1.png)  
+
+Pour mettre en place cette relation dans notre requête SQL nous devons utiliser le mot clé **include**.
+```js
+const result = await Quiz.findAll({
+    include: 'author',
+    where: {
+        id: 1
+    }
+});
+```
+Sequelize va nous générer une requête SQL de ce format :
+```sql
+SELECT "Quiz"."id", "Quiz"."title", "Quiz"."description", "Quiz"."user_id", "author"."id" AS "author.id", "author"."email" AS "author.email", "author"."password" AS "author.password", "author"."firstname" AS "author.firstname", "author"."lastname" AS "author.lastname" 
+FROM "quiz" AS "Quiz" 
+LEFT OUTER JOIN "user" AS "author" ON "Quiz"."user_id" = "author"."id" 
+WHERE "Quiz"."id" = 1;
+```
+Cette requête SQL nous donne ceci comme résultat : 
+![image](/images/include-quiz-user-id-1.png)
+
+Et si nous faisons un `console.log` de result nous avons :
+```js
+Quiz {
+    dataValues: {
+      id: 1,
+      title: 'Animaux célèbres - I',
+      description: 'Tantôt effrayants, tdropantôt drôles.',
+      user_id: 1,
+      author: [User]
+    },
+```
