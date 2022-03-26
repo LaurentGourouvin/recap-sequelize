@@ -1,12 +1,12 @@
 # Association avec Sequelize
-[[ ]Récap-Sequelize](./README.md)  
-[x] Association avec Sequelize
+- [Récap-Sequelize](./README.md)  
+- [Association avec Sequelize](./association.md)
 ## Mettre en place des relations/associations grâce à Sequelize
 
 Avec Sequelize nous avons quatres possibilités d'association:
 - `HasOne`
 - `BelongsTo`
-- `HasMany`
+- `HasMany` 
 - `BelongsTo`
    
 L'association `User.hasOne(Cart)`, définit la cardinalité **[1,1]** entre la table **User** et **Cart** avec une *clé étrangère* qu sera définie dans le model **Cart**. 
